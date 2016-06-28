@@ -1,0 +1,363 @@
+
+/************************************************************
+ * @主体
+ */
+div.datePicker{
+	position: relative;
+	width: 230px;
+	height: 30px;
+	border: 1px solid #AAB2BD;
+	text-align: center;
+}
+div.datePicker ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/*日历图标*/
+div.datePicker > div.datePicker-icon{
+	width: 25px;
+	height: 16px;
+	border: 2px solid #AAB2BD;
+	border-top: 5px solid #AAB2BD;
+	font-size: 12px;
+	line-height: 18px;
+	color: #AAB2BD;
+	font-family: arial;
+	float: right;
+	margin: 3px 3px 0px 0px;
+}
+/*日历输入框*/
+div.datePicker > input.datePicker-input{
+	border: none;
+	outline: none;
+	width: 180px;
+	height: 18px;
+	margin: 5px 0px 0px 5px;
+	color: #565656;
+}
+
+
+/*****************************************************************************************************
+ * @日历主体
+ */
+ div.datePicker-showdate{
+ 	position: absolute;
+ 	top: 35px;
+ 	left: -1px;
+	width: 230px;
+	height: 225px;
+	border: 1px solid #AAB2BD;
+}
+
+/*****************************************************************************
+ * @日历头部按钮组状态栏
+ */
+div.datePicker-showdate > ul.date-title{
+	width: 228px;
+	height: 25px;
+	/*background: #AAB2BD;*/
+	padding-left: 4px;
+	display: block;
+}
+div.datePicker-showdate > ul.date-title2{
+	width: 230px;
+	height: 25px;
+	background: #AAB2BD;
+	display: none;
+}
+div.datePicker-showdate > ul.date-title > li{
+	font-family: arial;
+	float: left;
+	margin-top: 2px;
+	margin-left: 1px;
+}
+div.datePicker-showdate > ul.date-title > li.btn{
+	width: 25px;
+	height: 25px;
+}
+div.datePicker-showdate > ul.date-title > li.text{
+	width: 59px;
+	height: 25px;
+	line-height: 20px;
+}
+/*按钮样式*/
+div.datePicker-showdate > ul.date-title > li.btn > a{
+	display: block;
+	width: 19px;
+	height: 19px;
+	line-height: 19px;
+	text-decoration: none;
+	color: black;
+	border: 1px solid #aab2bd;
+	background-color: #e6e9ed;
+	border-radius: 3px;
+}
+/*输入框样式*/
+div.datePicker-showdate > ul.date-title > li > input{
+	outline: none;
+	border: 1px solid #AAB2BD;
+	height: 17px;
+	width: 55px;
+	margin-right: 3px;
+	text-align: center;
+}
+
+/*******************************************************************************
+ * @日期主体样式
+ */
+div.datePicker-showdate > div.data-content{
+	margin: 2px 0px 0px 2px;
+	width: 223px;
+	height: 168px;
+	border: 1px solid #AAB2BD;
+	font-family: "微软雅黑";
+}
+
+/************************************************************************
+ * 日期天数的显示方式
+ */
+div.datePicker-showdate > div.data-content > div.content-day{
+	display: block;
+}
+
+/*周的样式*/
+div.datePicker-showdate > div.data-content > div.content-day > ul.week-title{
+	width: 220px;
+	height: 24px;
+	background-color: #e6e9ed;
+	padding-left: 3px;
+}
+div.datePicker-showdate > div.data-content > div.content-day > ul.week-title > li{
+	float: left;
+	width: 31px;
+	line-height: 24px;
+}
+
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content{
+	width: 220px;
+	padding-left: 3px;
+	height: 144px;
+}
+
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li{
+	width: 31px;
+	height: 23px;
+	float: left;
+	line-height: 24px;
+	padding-top: 1px;
+}
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a{
+	display: block;
+	width: 31px;
+	height: 22px;
+	line-height: 22px;
+	text-decoration: none;
+	color: #565656;
+}
+/*鼠标移动变换颜色*/
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a:hover, div.datePicker-showdate > div.data-content > ul.day-content > li.on > a{
+	background: #e6e9ed;
+	border-radius: 3px;
+}
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.not > a{
+	cursor: not-allowed;
+	color: #ccc;
+}
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.not > a:hover{
+	background: #fff;
+}
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.week > a{
+	color: red;
+}
+
+/***********************************************************************
+ * @日期主体显示月份
+ */
+div.datePicker-showdate > div.data-content > div.content-month{
+	display: block;
+	width: 223px;
+	height: 168px;
+	position: relative;
+}
+/*按钮 按钮可能不需要了，后期可能删除，暂时保留*/
+div#close-month{
+	display: none;
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	background: #E6E9ED;
+	top: 0px;
+	right: 0px;
+	font-size: 16px;
+	line-height: 14px;
+	font-family: arial;
+}
+div#close-month > a{
+	display: block;
+	width: 14px;
+	height: 14px;
+	text-decoration: none;
+	color: red;
+}
+div.datePicker-showdate > div.data-content > div.content-month > ul > li{
+	float: left;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	margin: 10px 6px 0px 6px;
+	text-align: center;
+}
+div.datePicker-showdate > div.data-content > div.content-month > ul > li > a{
+	display: block;
+	width: 60px;
+	height: 30px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #AAB2BD;
+}
+div.datePicker-showdate > div.data-content > div.content-month > ul > li > a:hover{
+	background-color: #E6E9ED;
+	color: #565656;
+}
+
+
+/***********************************************************************
+ * @日期主体显示年份
+ */
+div.datePicker-showdate > div.data-content > div.content-year{
+	display: none;
+	width: 223px;
+	height: 168px;
+	position: relative;
+	overflow-y: scroll;
+}
+/*这里是对滚动条的处理，暂时抛弃使用
+div.datePicker-showdate > div.data-content > div.content-year::-webkit-scrollbar{
+	width: 10px;
+	height: 0px;
+	background: aliceblue;
+}
+div.datePicker-showdate > div.data-content > div.content-year::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+	background: aliceblue;
+}
+div.datePicker-showdate > div.data-content > div.content-year::-webkit-scrollbar-thumb{
+	width: 10px;
+	height: 30px;
+	background: lightsteelblue;
+	border-radius: 2px;
+}
+*/
+/*按钮*/
+div#close-year{
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	background: #E6E9ED;
+	top: 0px;
+	right: 10px;
+	font-size: 16px;
+	line-height: 14px;
+	font-family: arial;
+	z-index: 9999;
+	display: none;
+}
+div#close-year > a{
+	display: block;
+	width: 14px;
+	height: 14px;
+	text-decoration: none;
+	color: red;
+}
+div.datePicker-showdate > div.data-content > div.content-year > ul > li{
+	float: left;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	margin: 8px 6px 0px 12px;
+	text-align: center;
+}
+div.datePicker-showdate > div.data-content > div.content-year > ul > li > a{
+	display: block;
+	width: 80px;
+	height: 30px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #AAB2BD;
+}
+div.datePicker-showdate > div.data-content > div.content-year > ul > li > a:hover{
+	background-color: #E6E9ED;
+	color: #565656;
+}
+/******************************************************************************************
+ * @底部时间及按钮
+ */
+div.date-bottom{
+	margin: 3px 0px 0px 2px;
+	width: 225px;
+	height: 25px;
+}
+
+div.date-bottom > ul.date-date{
+	font-size: 14px;
+	width: 100px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	float: left;
+}
+div.date-bottom > ul.date-date > li{
+	float: left;
+}
+div.date-bottom > ul.date-date > li a{
+	text-decoration: none;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #565656;
+}
+div.date-bottom > ul.date-date > li.key{
+	width: 32px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #AAB2BD;
+}
+div.date-bottom > ul.date-date > li.value{
+	width: 65px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #AAB2BD;
+	border-left: none;
+}
+
+
+div.date-bottom > ul.date-btns{
+	width: 111px;
+	height: 25px;
+	float: right;
+}
+div.date-bottom > ul.date-btns > li{
+	width: 37px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+}
+div.date-bottom > ul.date-btns > li a{
+	display: block;
+	width: 32px;
+	height: 20px;
+	line-height: 20px;
+	text-decoration: none;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	color: #595959;
+	border: 1px solid #AAB2BD;
+	border-radius: 4px;
+}
+div.date-bottom > ul.date-btns > li a:hover{
+	background-color: #E6E9ED;
+}

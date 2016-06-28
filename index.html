@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/datePicker.css"/>
+	</head>
+	<body>
+		
+		<!--<div class="datePicker" id="myce">
+			<input type="text" class="datePicker-input"/>
+			<div class="datePicker-icon">day</div>
+			
+			<div class="datePicker-showdate">
+				
+				<ul class="date-title">
+					<li class="year-prev btn"><a href="javascript:void(0);">◄</a></li>
+					<li	class="year-li text"><input type="text" name="" id="" value="2016年" /></li>
+					<li class="year-next btn"><a href="javascript:void(0);">►</a></li>
+					<li class="month-prev btn"><a href="javascript:void(0);">◄</a></li>
+					<li	class="month-li text"><input type="text" name="" id="" value="6月" /></li>
+					<li class="month-next btn"><a href="javascript:void(0);">►</a></li>
+				</ul>
+				<ul class="date-title2"></ul>
+				
+				
+				<div class="data-content">
+					
+					<div class="content-day">
+						
+						<ul class="week-title">
+							<li>日</li>
+							<li>一</li>
+							<li>二</li>
+							<li>三</li>
+							<li>四</li>
+							<li>五</li>
+							<li>六</li>
+						</ul>
+						
+						<ul class="day-content">
+							<li class="not"><a href="javascript:void(0);">29</a></li>
+							<li class="not"><a href="javascript:void(0);">30</a></li>
+							<li class="not"><a href="javascript:void(0);">31</a></li>
+							<li><a href="javascript:void(0);">1</a></li>
+							<li><a href="javascript:void(0);">2</a></li>
+							<li><a href="javascript:void(0);">3</a></li>
+							<li class="week"><a href="javascript:void(0);">4</a></li>
+							
+							<li class="week"><a href="javascript:void(0);">5</a></li>
+							<li><a href="javascript:void(0);">6</a></li>
+							<li><a href="javascript:void(0);">7</a></li>
+							<li><a href="javascript:void(0);">8</a></li>
+							<li><a href="javascript:void(0);">9</a></li>
+							<li><a href="javascript:void(0);">10</a></li>
+							<li class="week"><a href="javascript:void(0);">11</a></li>
+							
+							<li class="week"><a href="javascript:void(0);">12</a></li>
+							<li><a href="javascript:void(0);">13</a></li>
+							<li><a href="javascript:void(0);">14</a></li>
+							<li><a href="javascript:void(0);">15</a></li>
+							<li><a href="javascript:void(0);">16</a></li>
+							<li><a href="javascript:void(0);">17</a></li>
+							<li class="week"><a href="javascript:void(0);">18</a></li>
+							
+							<li class="week"><a href="javascript:void(0);">19</a></li>
+							<li><a href="javascript:void(0);">20</a></li>
+							<li><a href="javascript:void(0);">21</a></li>
+							<li><a href="javascript:void(0);">22</a></li>
+							<li><a href="javascript:void(0);">23</a></li>
+							<li><a href="javascript:void(0);">24</a></li>
+							<li class="week"><a href="javascript:void(0);">25</a></li>
+							
+							<li class="week"><a href="javascript:void(0);">26</a></li>
+							<li class="on"><a href="javascript:void(0);">27</a></li>
+							<li><a href="javascript:void(0);">28</a></li>
+							<li><a href="javascript:void(0);">29</a></li>
+							<li><a href="javascript:void(0);">30</a></li>
+							<li class="not"><a href="javascript:void(0);">1</a></li>
+							<li class="not"><a href="javascript:void(0);">2</a></li>
+							
+							<li class="not"><a href="javascript:void(0);">3</a></li>
+							<li class="not"><a href="javascript:void(0);">4</a></li>
+							<li class="not"><a href="javascript:void(0);">5</a></li>
+							<li class="not"><a href="javascript:void(0);">6</a></li>
+							<li class="not"><a href="javascript:void(0);">7</a></li>
+							<li class="not"><a href="javascript:void(0);">8</a></li>
+							<li class="not"><a href="javascript:void(0);">9</a></li>
+						</ul>
+					</div>
+					
+					<div class="content-month">
+						<div id="close-month"><a href="javascript:void(0);">×</a></div>
+						<ul>
+							<li><a href="javascript:void(0);">一月</a></li>
+							<li><a href="javascript:void(0);">二月</a></li>
+							<li><a href="javascript:void(0);">三月</a></li>
+							<li><a href="javascript:void(0);">四月</a></li>
+							<li><a href="javascript:void(0);">五月</a></li>
+							<li><a href="javascript:void(0);">六月</a></li>
+							<li><a href="javascript:void(0);">七月</a></li>
+							<li><a href="javascript:void(0);">八月</a></li>
+							<li><a href="javascript:void(0);">九月</a></li>
+							<li><a href="javascript:void(0);">十月</a></li>
+							<li><a href="javascript:void(0);">十一月</a></li>
+							<li><a href="javascript:void(0);">十二月</a></li>
+						</ul>
+						
+					</div>
+					
+					<div class="content-year">
+						<div id="close-year"><a href="javascript:void(0);">×</a></div>
+						<ul>
+							<li><a href="javascript:void(0);">2000年</a></li>
+							<li><a href="javascript:void(0);">2001年</a></li>
+							<li><a href="javascript:void(0);">2002年</a></li>
+							<li><a href="javascript:void(0);">2003年</a></li>
+							<li><a href="javascript:void(0);">2004年</a></li>
+							<li><a href="javascript:void(0);">2005年</a></li>
+							<li><a href="javascript:void(0);">2006年</a></li>
+							<li><a href="javascript:void(0);">2007年</a></li>
+							<li><a href="javascript:void(0);">2008年</a></li>
+							<li><a href="javascript:void(0);">2009年</a></li>
+							<li><a href="javascript:void(0);">2010年</a></li>
+							<li><a href="javascript:void(0);">2011年</a></li>
+							<li><a href="javascript:void(0);">2012年</a></li>
+							<li><a href="javascript:void(0);">2013年</a></li>
+							<li><a href="javascript:void(0);">2014年</a></li>
+							<li><a href="javascript:void(0);">2015年</a></li>
+							<li><a href="javascript:void(0);">2016年</a></li>
+							<li><a href="javascript:void(0);">2017年</a></li>
+							<li><a href="javascript:void(0);">2018年</a></li>
+							<li><a href="javascript:void(0);">2019年</a></li>
+							<li><a href="javascript:void(0);">2020年</a></li>
+							<li><a href="javascript:void(0);">2021年</a></li>
+							<li><a href="javascript:void(0);">2022年</a></li>
+							<li><a href="javascript:void(0);">2023年</a></li>
+						</ul>
+						
+					</div>
+					
+				</div>
+				
+				<div class="date-bottom">
+					<ul class="date-date">
+						<li class="key">时间</li>
+						<li class="value"><a href="javascript:void(0);">12:00:00</a></li>
+					</ul>
+					
+					<ul class="date-btns">
+						<li><a href="javascript:void(0);">清空</a></li>
+						<li><a href="javascript:void(0);">今天</a></li>
+						<li><a href="javascript:void(0);">确定</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>-->
+		
+		<div class="datePicker" id="myce"></div>
+		
+		<script src="js/datePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var dats = new DatePicker({id : 'myce', type : 'Y-M-D-H'});
+		</script>
+	</body>
+</html>
