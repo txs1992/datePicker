@@ -1,4 +1,3 @@
-
 /************************************************************
  * @主体
  */
@@ -119,7 +118,7 @@ div.datePicker-showdate > div.data-content{
  * 日期天数的显示方式
  */
 div.datePicker-showdate > div.data-content > div.content-day{
-	display: block;
+	display: none;
 }
 
 /*周的样式*/
@@ -176,7 +175,7 @@ div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > 
  * @日期主体显示月份
  */
 div.datePicker-showdate > div.data-content > div.content-month{
-	display: block;
+	display: none;
 	width: 223px;
 	height: 168px;
 	position: relative;
@@ -293,6 +292,46 @@ div.datePicker-showdate > div.data-content > div.content-year > ul > li > a{
 div.datePicker-showdate > div.data-content > div.content-year > ul > li > a:hover{
 	background-color: #E6E9ED;
 	color: #565656;
+}
+
+/******************************************************************************
+ * @日期显示时分秒
+ */
+div.datePicker-showdate > div.data-content > div.content-date{
+	display: block;
+	width: 223px;
+	height: 168px;
+	position: relative;
+	overflow: hidden;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul{
+	top: 0px;
+	width: 68px;
+	float: left;
+	/*background: skyblue;*/
+	position: absolute;
+	padding-bottom: 120px;
+	cursor: pointer;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul > li > a{
+	text-decoration: none;
+	display: block;
+	width: 68px;
+	height: 30px;
+	line-height: 30px;
+	color: #565656;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul.date-hours{
+	left: 4px;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul.date-minutes{
+	left: 77px;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul.date-seconds{
+	left: 150px;
+}
+div.datePicker-showdate > div.data-content > div.content-date > ul >li{
+	height: 30px;
 }
 /******************************************************************************************
  * @底部时间及按钮
