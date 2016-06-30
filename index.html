@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/datePicker.css"/>
 	</head>
 	<body>
-		
+<!--		
 		<div class="datePicker" id="myce">
 			<input type="text" class="datePicker-input"/>
 			<div class="datePicker-icon">day</div>
@@ -39,53 +39,53 @@
 						</ul>
 						
 						<ul class="day-content">
-							<li class="not"><a href="javascript:void(0);">29</a></li>
-							<li class="not"><a href="javascript:void(0);">30</a></li>
-							<li class="not"><a href="javascript:void(0);">31</a></li>
+							<li><a href="javascript:void(0);" class="not">29</a></li>
+							<li><a href="javascript:void(0);" class="not">30</a></li>
+							<li><a href="javascript:void(0);" class="not">31</a></li>
 							<li><a href="javascript:void(0);">1</a></li>
 							<li><a href="javascript:void(0);">2</a></li>
 							<li><a href="javascript:void(0);">3</a></li>
-							<li class="week"><a href="javascript:void(0);">4</a></li>
+							<li><a href="javascript:void(0);" class="week">4</a></li>
 							
-							<li class="week"><a href="javascript:void(0);">5</a></li>
+							<li><a href="javascript:void(0);" class="week">5</a></li>
 							<li><a href="javascript:void(0);">6</a></li>
 							<li><a href="javascript:void(0);">7</a></li>
 							<li><a href="javascript:void(0);">8</a></li>
 							<li><a href="javascript:void(0);">9</a></li>
 							<li><a href="javascript:void(0);">10</a></li>
-							<li class="week"><a href="javascript:void(0);">11</a></li>
+							<li><a href="javascript:void(0);" class="week">11</a></li>
 							
-							<li class="week"><a href="javascript:void(0);">12</a></li>
+							<li><a href="javascript:void(0);" class="week">12</a></li>
 							<li><a href="javascript:void(0);">13</a></li>
 							<li><a href="javascript:void(0);">14</a></li>
 							<li><a href="javascript:void(0);">15</a></li>
 							<li><a href="javascript:void(0);">16</a></li>
 							<li><a href="javascript:void(0);">17</a></li>
-							<li class="week"><a href="javascript:void(0);">18</a></li>
+							<li><a href="javascript:void(0);" class="week">18</a></li>
 							
-							<li class="week"><a href="javascript:void(0);">19</a></li>
+							<li><a href="javascript:void(0);" class="week">19</a></li>
 							<li><a href="javascript:void(0);">20</a></li>
 							<li><a href="javascript:void(0);">21</a></li>
 							<li><a href="javascript:void(0);">22</a></li>
 							<li><a href="javascript:void(0);">23</a></li>
 							<li><a href="javascript:void(0);">24</a></li>
-							<li class="week"><a href="javascript:void(0);">25</a></li>
+							<li><a href="javascript:void(0);" class="week">25</a></li>
 							
-							<li class="week"><a href="javascript:void(0);">26</a></li>
-							<li class="on"><a href="javascript:void(0);">27</a></li>
+							<li><a href="javascript:void(0);" class="week">26</a></li>
+							<li><a href="javascript:void(0);" class="on">27</a></li>
 							<li><a href="javascript:void(0);">28</a></li>
 							<li><a href="javascript:void(0);">29</a></li>
 							<li><a href="javascript:void(0);">30</a></li>
-							<li class="not"><a href="javascript:void(0);">1</a></li>
-							<li class="not"><a href="javascript:void(0);">2</a></li>
+							<li><a href="javascript:void(0);"  class="not">1</a></li>
+							<li><a href="javascript:void(0);"  class="not">2</a></li>
 							
-							<li class="not"><a href="javascript:void(0);">3</a></li>
-							<li class="not"><a href="javascript:void(0);">4</a></li>
-							<li class="not"><a href="javascript:void(0);">5</a></li>
-							<li class="not"><a href="javascript:void(0);">6</a></li>
-							<li class="not"><a href="javascript:void(0);">7</a></li>
-							<li class="not"><a href="javascript:void(0);">8</a></li>
-							<li class="not"><a href="javascript:void(0);">9</a></li>
+							<li><a href="javascript:void(0);" class="not">3</a></li>
+							<li><a href="javascript:void(0);" class="not">4</a></li>
+							<li><a href="javascript:void(0);" class="not">5</a></li>
+							<li><a href="javascript:void(0);" class="not">6</a></li>
+							<li><a href="javascript:void(0);" class="not">7</a></li>
+							<li><a href="javascript:void(0);" class="not">8</a></li>
+							<li><a href="javascript:void(0);" class="not">9</a></li>
 						</ul>
 					</div>
 					
@@ -140,6 +140,15 @@
 					
 					
 					<div class="content-date">
+						
+						<div class="date-check">
+							<span class="cancel">取消</span>
+							<span class="confirm">确定</span>
+						</div>
+						<div class="date-line">
+							
+						</div>
+						
 						<ul class="date-hours">
 							<li><a href="javascript:void(0);">0</a></li>
 							<li><a href="javascript:void(0);">1</a></li>
@@ -239,12 +248,12 @@
 				
 			</div>
 		</div>
-		
-		<!--<div class="datePicker" id="myce"></div>-->
+		-->
+		<div class="datePicker" id="myce"></div>
 		
 		<script src="js/datePicker.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
+			var dat = new DatePicker({id:"myce", type : "Y-M-D-H"});
 			
 		
 			var uls = document.getElementById('myce').getElementsByTagName('ul');
@@ -262,7 +271,6 @@
 			var direct = 0;
 			
 			function scrollFunc(e) {
-		        var ss = 0;
 		        e = e || window.event;
 		        
 		        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件             
