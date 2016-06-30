@@ -118,7 +118,8 @@ div.datePicker-showdate > div.data-content{
  * 日期天数的显示方式
  */
 div.datePicker-showdate > div.data-content > div.content-day{
-	display: none;
+ 	position: absolute;
+	display: block;
 }
 
 /*周的样式*/
@@ -156,18 +157,19 @@ div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > 
 	color: #565656;
 }
 /*鼠标移动变换颜色*/
-div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a:hover, div.datePicker-showdate > div.data-content > ul.day-content > li.on > a{
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a:hover, 
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a.on{
 	background: #e6e9ed;
 	border-radius: 3px;
 }
-div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.not > a{
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a.not{
 	cursor: not-allowed;
 	color: #ccc;
 }
-div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.not > a:hover{
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a.not:hover{
 	background: #fff;
 }
-div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li.week > a{
+div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > li > a.week{
 	color: red;
 }
 
@@ -175,10 +177,13 @@ div.datePicker-showdate > div.data-content > div.content-day > ul.day-content > 
  * @日期主体显示月份
  */
 div.datePicker-showdate > div.data-content > div.content-month{
+ 	position: absolute;
 	display: none;
 	width: 223px;
 	height: 168px;
 	position: relative;
+	background-color:#fff;
+	z-index: 999;
 }
 /*按钮 按钮可能不需要了，后期可能删除，暂时保留*/
 div#close-month{
@@ -232,6 +237,9 @@ div.datePicker-showdate > div.data-content > div.content-year{
 	height: 168px;
 	position: relative;
 	overflow-y: scroll;
+	background-color:#fff;
+	position: absolute;
+	z-index: 999;
 }
 /*这里是对滚动条的处理，暂时抛弃使用
 div.datePicker-showdate > div.data-content > div.content-year::-webkit-scrollbar{
@@ -298,11 +306,44 @@ div.datePicker-showdate > div.data-content > div.content-year > ul > li > a:hove
  * @日期显示时分秒
  */
 div.datePicker-showdate > div.data-content > div.content-date{
-	display: block;
+	display: none;
 	width: 223px;
 	height: 168px;
 	position: relative;
 	overflow: hidden;
+}
+/*头部选择框*/
+div.datePicker-showdate > div.data-content > div.content-date > div.date-check{
+	width: 223px;
+	height: 29px;
+	background-color: #fff;
+	z-index: 9999;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
+div.datePicker-showdate > div.data-content > div.content-date > div.date-check > span{
+	display: block;
+	width: 50px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
+div.datePicker-showdate > div.data-content > div.content-date > div.date-check > span.cancel{
+	float: left;
+	color: #999;
+}
+div.datePicker-showdate > div.data-content > div.content-date > div.date-check > span.confirm{
+	float: right;
+	color: #fa8919;
+}
+div.datePicker-showdate > div.data-content > div.content-date > div.date-line{
+	width: 223px;
+	height: 28px;
+	border: 1px solid #bbb;
+	border-left: none;
+	border-right: none;
+	margin-top: 60px;
 }
 div.datePicker-showdate > div.data-content > div.content-date > ul{
 	top: 0px;
@@ -312,6 +353,8 @@ div.datePicker-showdate > div.data-content > div.content-date > ul{
 	position: absolute;
 	padding-bottom: 120px;
 	cursor: pointer;
+	margin-top: 60px;
+	z-index: 0;
 }
 div.datePicker-showdate > div.data-content > div.content-date > ul > li > a{
 	text-decoration: none;
@@ -319,10 +362,12 @@ div.datePicker-showdate > div.data-content > div.content-date > ul > li > a{
 	width: 68px;
 	height: 30px;
 	line-height: 30px;
-	color: #565656;
+	color: #ccc;
+	z-index: 0;
 }
 div.datePicker-showdate > div.data-content > div.content-date > ul.date-hours{
 	left: 4px;
+	z-index: 0;
 }
 div.datePicker-showdate > div.data-content > div.content-date > ul.date-minutes{
 	left: 77px;
@@ -337,7 +382,8 @@ div.datePicker-showdate > div.data-content > div.content-date > ul >li{
  * @底部时间及按钮
  */
 div.date-bottom{
-	margin: 3px 0px 0px 2px;
+	position: absolute;
+	top: 200px;
 	width: 225px;
 	height: 25px;
 }
