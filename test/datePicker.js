@@ -1056,6 +1056,9 @@ function eventHandler(param, myDate, scrollVals, e){
 				//对自定义日期对象的处理;
 				setInputTimeValue(myDate, timer, param, curr);
 				
+				if(!param.showDate){
+					hideModule(param.id, 'datePicker-showdate', 'div');
+				}
 				break;
 				
 			//处理点击确定按钮
@@ -1067,6 +1070,9 @@ function eventHandler(param, myDate, scrollVals, e){
 				//对自定义日期对象的处理
 				setInputTimeValue(myDate, timer, param, curr, scrollVals);
 				
+				if(!param.showDate){
+					hideModule(param.id, 'datePicker-showdate', 'div');
+				}
 				break;
 				
 			//点击时间模块显示时间选择器。
@@ -1223,7 +1229,7 @@ function DatePicker(param){
 	var myDate = this.myDate;
 	
 	//如果不是以new 构造函数的形式使用，就默认使用构造函数的方式调用。
-	if(!this instanceof DatePicker){
+	if(this instanceof DatePicker == false){
 		return new DatePicker(param);
 	}
 	
@@ -1538,9 +1544,12 @@ function DatePicker(param){
 		//初始化隐藏日期模块
 		hideModule(param.id, 'datePicker-showdate', 'div');
 		
-		if(param.myInput){
-			hideModule(param.id, 'datePicker-box', 'div');
+		if(param.showDate){
 			showModule(param.id, 'datePicker-showdate', 'div');
+		}
+		
+		if(typeof param.showInput != "undefined" && param.showInput == false){
+			hideModule(param.id, 'datePicker-box', 'div');
 		}
 		
 		//初始化数据
@@ -1595,7 +1604,9 @@ function DatePicker(param){
 			
 		addEventHandler(document, 'click', function(){
 			//隐藏模块
-			hideModule(param.id, 'datePicker-showdate', 'div');
+			if(!param.showDate){
+				hideModule(param.id, 'datePicker-showdate', 'div');
+			}
 		});
 		
 	}else{
@@ -1608,89 +1619,142 @@ function DatePicker(param){
 
 //获取当前的年数。
 DatePicker.prototype.getYear = function(){
-	return typeof this.myDate.year == "undefined" ? undefined : this.myDate.year;
+	if(typeof this.myDate.year == "undefined"){
+		throw new EvalError("DatePicker years cannot be obtained, see when you use DatePicker constructor," + 
+		" set the type property contains the 'Y'!");
+	}else{
+		return this.myDate.year;
+	}
 }
 
 //设置当前的年数
 DatePicker.prototype.setYear = function(val){
-	if(typeof this.myDate.year == "undefined" || typeof val != "number")
-		return ;
+	if(typeof this.myDate.year == "undefined" || typeof val != "number"){
+		throw new EvalError("DatePicker cannot set the year view when you use DatePicker constructor, " + 
+			"type property contains 'Y'! Or see if you set up the number of years is correct!");
+	}else{
 		this.myDate.year = val;
+	}
 }
 
 //获取当前的月数。
 DatePicker.prototype.getMonth = function(){
-	return typeof this.myDate.month == "undefined" ? undefined : this.myDate.month;
+	if(typeof this.myDate.month == "undefined"){
+		throw new EvalError("DatePicker month cannot be obtained, see when you use DatePicker constructor, " + 
+			"set the type property contains'M'!" );
+	}else{
+		return this.myDate.month;
+	}
 }
 
 //设置当前的月数
 DatePicker.prototype.setMonth = function(val){
-	if(typeof this.myDate.month == "undefined" || typeof val != "number")
-		return ;
+	if(typeof this.myDate.month == "undefined" || typeof val != "number"){
+		throw new EvalError("DatePicker month cannot be set, see when you use DatePicker constructor, " + 
+			"type property contains'M'! Or see if you set the number of months is right!");
+	}else{
 		this.myDate.month = val;
+	}
 }
 
 //获取当前的天数。
 DatePicker.prototype.getDay = function(){
-	return typeof this.myDate.day == "undefined" ? undefined : this.myDate.day;
+	if(typeof this.myDate.day == "undefined"){
+		throw new EvalError("DatePicker days cannot be obtained, see when you use DatePicker constructor," + 
+			" set the type property contains'D'!");
+	}else{
+		return this.myDate.day;
+	}
 }
 
 //设置当前的天数
 DatePicker.prototype.setDay = function(val){
-	if(typeof this.myDate.day == "undefined" || typeof val != "number")
-		return ;
-		
-	switch(this.param.type){
-		case "Y-M-D-H":
-		case "Y-M-D":
-			var curr = new Date(this.myDate.year, this.myDate.month - 1, val);
-			this.myDate.day = val;
-			this.myDate.week = curr.getDay();
-			break;
-		case "D":
-			this.myDate.day = val;
-			break;
+	
+	if(typeof this.myDate.day == "undefined" || typeof val != "number"){
+		throw new EvalError("DatePicker cannot set the number of days, see when you use DatePicker constructor, " + 
+			"type property contains'D'! Or see if you set the number of days is correct!");
+	}else{
+		switch(this.param.type){
+			case "Y-M-D-H":
+			case "Y-M-D":
+				var curr = new Date(this.myDate.year, this.myDate.month - 1, val);
+				this.myDate.day = val;
+				this.myDate.week = curr.getDay();
+				break;
+			case "D":
+				this.myDate.day = val;
+				break;
+		}
 	}
-		
+	
 }
 
 //获取当前的周数
 DatePicker.prototype.getWeek = function(){
-	return typeof this.myDate.week == "undefined" ? undefined : this.myDate.week;
+	if(typeof this.myDate.week == "undefined"){
+		throw new EvalError("DatePicker days cannot be obtained, see when you use DatePicker constructor," + 
+			" set the type property contains'D'!");
+	}else{
+		return this.myDate.week;
+	}
 }
 
 //获取当前的小时
 DatePicker.prototype.getHours = function(){
-	return typeof this.myDate.hours == "undefined" ? undefined : this.myDate.hours;
+	if(typeof this.myDate.hours == "undefined"){
+		throw new EvalError("DatePicker cannot get the hours, see when you use DatePicker constructor, " + 
+			"set the type property contains 'H'!");
+	}else{
+		return this.myDate.hours;
+	}
 }
 
 //设置当前的小时
 DatePicker.prototype.setHours = function(val){
-	if(typeof this.myDate.hours == "undefined" || typeof val != "number" || val < 0 || val > 23)
-		return ;
+	if(typeof this.myDate.hours == "undefined" || typeof val != "number" || val < 0 || val > 23){
+		throw new EvalError("DatePicker cannot set hour, please check when you use DatePicker constructor, " + 
+			"type property contains 'H'! Or view, you modify the correct hour");
+	}else{
 		this.myDate.hours = val;
+	}
 }
 
 //获取当前的分钟
 DatePicker.prototype.getMinutes = function(){
-	return typeof this.myDate.minutes == "undefined" ? undefined : this.myDate.minutes;
+	if(typeof this.myDate.minutes == "undefined"){
+		throw new EvalError("DatePicker cannot get the minutes, please check when you use DatePicker constructor," + 
+			" set the type property contains 'H'!" );
+	}else{
+		return this.myDate.minutes;
+	}
 }
 
 //设置当前的分钟
 DatePicker.prototype.setMinutes = function(val){
-	if(typeof this.myDate.minutes == "undefined" || typeof val != "number" || val < 0 || val > 59)
-		return ;
+	if(typeof this.myDate.minutes == "undefined" || typeof val != "number" || val < 0 || val > 59){
+		throw new EvalError("DatePicker cannot set the minutes, please check when you use DatePicker constructor, " + 
+			"type property contains 'H'! Or view, you modify the correct minutes");
+	}else{
 		this.myDate.minutes = val;
+	}
 }
 
 //获取当前的秒数
 DatePicker.prototype.getSeconds = function(){
-	return typeof this.myDate.seconds == "undefined" ? undefined : this.myDate.seconds;
+	if(typeof this.myDate.seconds == "undefined"){
+		throw new EvalError("DatePicker cannot get the number of seconds, please check when you use DatePicker constructor," + 
+			" set the type property contains 'H'!" );
+	}else{
+		return this.myDate.seconds;
+	}
 }
 
 //设置当前的秒数
 DatePicker.prototype.setSeconds = function(val){
-	if(typeof this.myDate.seconds == "undefined" || typeof val != "number" || val < 0 || val > 59)
-		return ;
+	if(typeof this.myDate.seconds == "undefined" || typeof val != "number" || val < 0 || val > 59){
+		throw new EvalError("DatePicker cannot set the number of seconds, please check when you use DatePicker constructor, " + 
+			"type property contains 'H'! Or see if you modify the number of seconds is the correct");
+	}else{
 		this.myDate.seconds = val;
+	}
 }
