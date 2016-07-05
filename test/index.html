@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="datePicker.css"/>
+		<link rel="stylesheet" type="text/css" href="css/datePicker.css"/>
 	</head>
 	<body>
 		
@@ -18,12 +18,12 @@
 			<div class="datePicker-showdate">
 				
 				<ul class="date-title">
-					<li class="year-prev btn"><a href="javascript:void(0);">◄</a></li>
-					<li	class="year-li text"><input type="text" name="" id="" value="2016年" /></li>
-					<li class="year-next btn"><a href="javascript:void(0);">►</a></li>
-					<li class="month-prev btn"><a href="javascript:void(0);">◄</a></li>
-					<li	class="month-li text"><input type="text" name="" id="" value="6月" /></li>
-					<li class="month-next btn"><a href="javascript:void(0);">►</a></li>
+					<li class="btn y-l-btn"><a class="year-prev" href="javascript:void(0);">◄</a></li>
+					<li class="text y-text"><input type="text" name="" class="year-input" value="2016年" /></li>
+					<li class="btn y-r-btn"><a class="year-next" href="javascript:void(0);">►</a></li>
+					<li class="btn m-l-btn"><a class="month-prev" href="javascript:void(0);">◄</a></li>
+					<li class="text m-text"><input class="month-input" type="text" name="" id="" value="6月" /></li>
+					<li class="btn m-r-btn"><a class="month-next" href="javascript:void(0);">►</a></li>
 				</ul>
 				<ul class="date-title2"></ul>
 				
@@ -253,14 +253,16 @@
 			</div>
 		</div>-->
 		
-		<div class="datePicker" id="myce"></div>
+		<!--<div class="datePicker" id="myce"></div>-->
 		
-		<script src="datePicker.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/datePicker.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 		
-			var dat = new DatePicker({id:"myce", type : "Y-M-D-H"});
-		
-		   	
+//			var dat = new DatePicker({id:"myce", type : "Y"});
+			
+//			alert(dat.getYear());
+		    
+		   
 		    
 		</script>
 	</body>
