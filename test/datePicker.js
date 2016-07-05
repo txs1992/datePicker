@@ -1176,7 +1176,7 @@ function scrollHandler(scrollVals, e){
 	var num = 0;
 	e = getEvent(e);
 	var target = getTarget(e);
-	
+	preventDefault(e);
 	//将所有的事件目标的class属性，以空格切割组成数组。
 	var classNames = target.className.split(" ");
 	
