@@ -28,9 +28,9 @@ var mydat2 = DatePicker({id:"myce", type : "Y"});
 #### "D"        只显示天数。
 #### "H"        只显示时间。
 
-### showDat 是否显示日历主体， 默认为false，隐藏的。如果设置为true，那么就不会再隐藏了。
+### showDat 是否显示日历主体， 默认为false，隐藏的。如果设置为true，那么将不会再隐藏了。
 
-### showInput 是否显示输入框，默认为true表示显示这个输入框，如果false，那么久不会再显示了。
+### showInput 是否显示输入框，默认为true表示显示这个输入框，如果false，那么将不会再显示了。
 
 
 
