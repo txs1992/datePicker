@@ -276,43 +276,71 @@ function getClassName(id, className, tag){
  * @param {Object} className
  * @param {Object} tag
  */
-function hasShowMoudule(el, id, className, tag){
+function hasShowMoudule(el, id, className, tag, param){
 	
 	switch(className){
 		
 		case "content-year":
-			hideModule(id, 'content-month', 'div');
-			hideModule(id, 'content-date', 'div');
 			
-			if(getComputedStyleAttrValue(el, "display") == "none"){
-				showModule(id, 'content-year', 'div');
+			if(param.type == "D"){
+				hideModule(id, 'content-month', 'div');
+			}else if(param.type == "M"){
+				hideModule(id, 'content-date', 'div');
 			}else{
-				hideModule(id, 'content-year', 'div');
+				hideModule(id, 'content-month', 'div');
+				hideModule(id, 'content-date', 'div');
+			}
+			
+			
+			if(param.type !== "Y"){
+				if(getComputedStyleAttrValue(el, "display") == "none"){
+					showModule(id, 'content-year', 'div');
+				}else{
+					hideModule(id, 'content-year', 'div');
+				}
 			}
 			
 			break;
 			
 		case "content-month":
-			hideModule(id, 'content-year', 'div');
-			hideModule(id, 'content-date', 'div');
-			
-			if(getComputedStyleAttrValue(el, "display") == "none"){
-				showModule(id, 'content-month', 'div');
+			if(param.type == "D"){
+				hideModule(id, 'content-year', 'div');
+			}else if(param.type == "Y"){
+				hideModule(id, 'content-date', 'div');
 			}else{
-				hideModule(id, 'content-month', 'div');
+				hideModule(id, 'content-year', 'div');
+				hideModule(id, 'content-date', 'div');
+			}
+			
+			if(param.type !== "M"){
+				if(getComputedStyleAttrValue(el, "display") == "none"){
+					showModule(id, 'content-month', 'div');
+				}else{
+					hideModule(id, 'content-month', 'div');
+				}
 			}
 			
 			break;
 			
 		case "content-date":
-			hideModule(id, 'content-year', 'div');
-			hideModule(id, 'content-date', 'div');
-			
-			if(getComputedStyleAttrValue(el, "display") == "none"){
-				showModule(id, 'content-date', 'div');
+		
+			if(param.type == "M"){
+				hideModule(id, 'content-year', 'div');
+			}else if(param.type == "Y"){
+				hideModule(id, 'content-month', 'div');
 			}else{
-				hideModule(id, 'content-date', 'div');
+				hideModule(id, 'content-year', 'div');
+				hideModule(id, 'content-month', 'div');
 			}
+			
+			if(param.type !== "D"){
+				if(getComputedStyleAttrValue(el, "display") == "none"){
+					showModule(id, 'content-date', 'div');
+				}else{
+					hideModule(id, 'content-date', 'div');
+				}
+			}
+			
 			
 			break;
 	}
@@ -543,15 +571,173 @@ function solveTime(hours, minutes, seconds){
  * @param {Object} myDate
  * @param {Object} currDate
  */
-function solveDate(myDate, currDate){
-	myDate.year = currDate.getFullYear();
-	myDate.month = currDate.getMonth() + 1;
-	myDate.day = currDate.getDate();
-	myDate.week = currDate.getDay();
-	myDate.hours = currDate.getHours();
-	myDate.minutes = currDate.getMinutes();
-	myDate.seconds = currDate.getSeconds();
-	myDate.currDate = currDate;
+function solveDate(myDate, currDate, type){
+	
+	switch(type){
+		case "Y-M-D-H" :
+			myDate.year = currDate.getFullYear();
+			myDate.month = currDate.getMonth() + 1;
+			myDate.day = currDate.getDate();
+			myDate.week = currDate.getDay();
+			myDate.hours = currDate.getHours();
+			myDate.minutes = currDate.getMinutes();
+			myDate.seconds = currDate.getSeconds();
+			myDate.currDate = currDate;
+			break;
+		
+		case "Y-M-D" :
+			myDate.year = currDate.getFullYear();
+			myDate.month = currDate.getMonth() + 1;
+			myDate.day = currDate.getDate();
+			myDate.week = currDate.getDay();
+			myDate.hours = undefined;
+			myDate.minutes = undefined;
+			myDate.seconds = undefined;
+			myDate.currDate = currDate;
+			break;
+			
+		case "Y-M" :
+			myDate.year = currDate.getFullYear();
+			myDate.month = currDate.getMonth() + 1;
+			myDate.day = undefined;
+			myDate.week = undefined;
+			myDate.hours = undefined;
+			myDate.minutes = undefined;
+			myDate.seconds = undefined;
+			myDate.currDate = currDate;
+			break;
+			
+		case "Y" :
+//			myDate.year = currDate.getFullYear();
+			myDate.month = undefined;
+			myDate.day = undefined;
+			myDate.week = undefined;
+			myDate.hours = undefined;
+			myDate.minutes = undefined;
+			myDate.seconds = undefined;
+			myDate.currDate = currDate;
+			break;
+			
+		case "M" :
+			myDate.year = undefined;
+//			myDate.month = currDate.getMonth() + 1;;
+			myDate.day = undefined;
+			myDate.week = undefined;
+			myDate.hours = undefined;
+			myDate.minutes = undefined;
+			myDate.seconds = undefined;
+			myDate.currDate = currDate;
+			break;
+			
+		case "D" :
+			myDate.year = undefined;
+			myDate.month = undefined;
+//			myDate.day = currDate.getDate();
+//			myDate.week = currDate.getDay();
+			myDate.hours = undefined;
+			myDate.minutes = undefined;
+			myDate.seconds = undefined;
+			myDate.currDate = currDate;
+			break;
+			
+		case "H" :
+			myDate.year = undefined;
+			myDate.month = undefined;
+			myDate.day = undefined;
+			myDate.week = undefined;
+			myDate.hours = currDate.getHours();
+			myDate.minutes = currDate.getMinutes();
+			myDate.seconds = currDate.getSeconds();
+			myDate.currDate = currDate;
+			break;
+	}
+	
+}
+
+/***************************************************
+ * @根据初始化传入的显示方式处理显示的值。
+ * @param {Object} myDate
+ * @param {Object} timer
+ * @param {Object} type
+ */
+function setInputTimeValue(myDate, timer, param, curr, scrollVals){
+	
+	switch(param.type){
+		case "Y-M-D-H" :
+			getClassName(param.id, "datePicker-input", 'input').value =
+				myDate.year + "年" +
+				myDate.month + "月" +
+				myDate.day + "日  " + 
+				timer.hours + ":" +
+				timer.minutes + ":" +
+				timer.seconds;
+			break;
+		
+		case "Y-M-D" :
+			getClassName(param.id, "datePicker-input", 'input').value =
+				myDate.year + "年" +
+				myDate.month + "月" +
+				myDate.day + "日  "; 
+			break;
+			
+		case "Y-M" :
+			getClassName(param.id, "datePicker-input", 'input').value =
+				myDate.year + "年" +
+				myDate.month + "月";
+			break;
+			
+		case "Y" :
+			getClassName(param.id, "datePicker-input", 'input').value =
+				myDate.year + "年";
+				var content_year = getClassName(param.id, 'content-year', 'div');
+				var year_as = getClassName(param.id, 'content-year', 'div').getElementsByTagName('a');
+				getClassName(param.id, "year-input", 'input').value = myDate.year + "年";
+				changeTag(year_as, "on", myDate.year);
+				content_year.scrollTop = parseInt((getTagIndex(year_as, "on") - 1) / 2)  * 38 ;
+			break;
+			
+		case "M" :
+			getClassName(param.id, "datePicker-input", 'input').value =
+				myDate.month + "月";
+			break;
+			
+		case "D" :
+			getClassName(param.id, "datePicker-input", 'input').value = myDate.day + "日  "; 
+			
+				var day_as = getClassName(param.id, 'content-day', 'div').getElementsByTagName('a');
+				
+				//这里是点击按钮之后将标记切换到新的按钮上。暂时不处理，后期根据要求修改。
+				
+				for(var i = 0, len = day_as.length; i < len; i++){
+					if(day_as[i].nodeType == 1 && day_as[i].className.indexOf("on") > -1){
+						removeClass(day_as[i], "on");
+						break;
+					}
+				}
+				
+				for(var i = 0, len = day_as.length; i < len; i++){
+					if(day_as[i].nodeType == 1 && day_as[i].firstChild.nodeValue == myDate.day){
+						addClass(day_as[i], "on");
+						break;
+					}
+				}
+				
+			break;
+			
+		case "H" :
+			if(typeof scrollVals == "object"){
+				var timer = solveTime(-scrollVals.scrollHours, -scrollVals.scrollMinutes, -scrollVals.scrollSeconds);
+			}
+			
+			getClassName(param.id, "datePicker-input", 'input').value = timer.hours + ":" +
+																			timer.minutes + ":" +
+																			timer.seconds;
+			break;
+			
+	}
+	
+	//对内置自定义日期对象的处理。
+	solveDate(myDate, curr, param.type);
 }
 
 //事件委托，事件处理
@@ -580,7 +766,7 @@ function eventHandler(param, myDate, scrollVals, e){
 				
 				
 				//判断当前的年的显示框是否是隐藏，如果是隐藏就显示，如果是显示就隐藏
-				hasShowMoudule(content_year, param.id, 'content-year', 'div');
+				hasShowMoudule(content_year, param.id, 'content-year', 'div', param);
 				
 				//如果对象的year属性是数字，并且大于0，那么就将按钮组中值等于year属性的按钮标记为显示。
 				if(typeof myDate.year == "number" && myDate.year > 0){
@@ -614,7 +800,12 @@ function eventHandler(param, myDate, scrollVals, e){
 				var year = target.firstChild.nodeValue;
 				myDate.year = parseInt(year);
 				getClassName(param.id, "year-input", 'input').value = year;
-				hideModule(param.id, 'content-year', 'div');
+				
+				if(param.type !== "Y"){
+					hideModule(param.id, 'content-year', 'div');
+				}else{
+					getClassName(param.id, "datePicker-input", 'input').value = year;
+				}
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
@@ -632,6 +823,10 @@ function eventHandler(param, myDate, scrollVals, e){
 				
 				if(year <= myDate.currDate.getFullYear() - 25){
 					year = myDate.currDate.getFullYear() - 25;
+				}
+				
+				if(param.type === "Y"){
+					getClassName(param.id, "datePicker-input", 'input').value = year + "年";
 				}
 				
 				myDate.year = year;
@@ -658,6 +853,10 @@ function eventHandler(param, myDate, scrollVals, e){
 					year = myDate.currDate.getFullYear() + 24;
 				}
 				
+				if(param.type === "Y"){
+					getClassName(param.id, "datePicker-input", 'input').value = year + "年";
+				}
+				
 				myDate.year = year;
 				getClassName(param.id, "year-input", 'input').value = year + "年";
 				
@@ -676,7 +875,7 @@ function eventHandler(param, myDate, scrollVals, e){
 				var content_month = getClassName(param.id, 'content-month', 'div');
 				
 				//判断当前的年的显示框是否是隐藏，如果是隐藏就显示，如果是显示就隐藏
-				hasShowMoudule(content_month, param.id, 'content-month', 'div');
+				hasShowMoudule(content_month, param.id, 'content-month', 'div', param);
 				
 				//获取所有的年的按钮的a元素的集合。
 				var month_as = content_month.getElementsByTagName('a');
@@ -708,7 +907,12 @@ function eventHandler(param, myDate, scrollVals, e){
 				//修改输入框的值。
 				getClassName(param.id, "month-input", 'input').value = month;
 				//隐藏当前区块。
-				hideModule(param.id, 'content-month', 'div');
+				if(param.type !== "M"){
+					hideModule(param.id, 'content-month', 'div');
+				}else{
+					getClassName(param.id, "datePicker-input", 'input').value = month;
+				}
+				
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
@@ -722,16 +926,27 @@ function eventHandler(param, myDate, scrollVals, e){
 				
 				var month = parseInt(getClassName(param.id, "month-input", 'input').value) - 1;
 				
-				if(month <= 1){
-					
-					if(parseInt(getClassName(param.id, "year-input", 'input').value) >
-							myDate.currDate.getFullYear() - 25){
+				
+				if(param.type === "M"){
+					getClassName(param.id, "datePicker-input", 'input').value = month + "月";
+					if(month < 1){
 						month = 12;
-						getClassName(param.id, "year-input", 'input').value = (--myDate.year) + "年";
-					}else{
-						month = 1;
 					}
 					
+				}else{
+				
+					if(month < 1){
+					
+						if(parseInt(getClassName(param.id, "year-input", 'input').value) >
+								myDate.currDate.getFullYear() - 25){
+							month = 12;
+							getClassName(param.id, "year-input", 'input').value = (--myDate.year) + "年";
+						}else{
+							month = 1;
+						}
+						
+					}
+				
 				}
 				
 				myDate.month = month;
@@ -753,15 +968,25 @@ function eventHandler(param, myDate, scrollVals, e){
 				
 				//获取点击之前的年与月.
 				
-				if(month > 12){
-					
-					if(parseInt(getClassName(param.id, "year-input", 'input').value) <
-							myDate.currDate.getFullYear() + 24){
+				if(param.type === "M"){
+					getClassName(param.id, "datePicker-input", 'input').value = month + "月";
+					if(month > 12){
 						month = 1;
-						getClassName(param.id, "year-input", 'input').value = (++myDate.year) + "年";
-					}else{
-						month = 12;
 					}
+					
+				}else{
+					
+					if(month > 12){
+					
+						if(parseInt(getClassName(param.id, "year-input", 'input').value) <
+								myDate.currDate.getFullYear() + 24){
+							month = 1;
+							getClassName(param.id, "year-input", 'input').value = (++myDate.year) + "年";
+						}else{
+							month = 12;
+						}
+					}
+					
 				}
 				
 				myDate.month = month;
@@ -792,7 +1017,6 @@ function eventHandler(param, myDate, scrollVals, e){
 						break;
 					}
 				}
-				
 				addClass(target, "on");
 				
 				
@@ -800,6 +1024,11 @@ function eventHandler(param, myDate, scrollVals, e){
 				var day = target.firstChild.nodeValue;
 				//将值赋给每个组件都独立拥有的时间对象。
 				myDate.day = parseInt(day);
+				
+				if(param.type === "D"){
+					getClassName(param.id, "datePicker-input", 'input').value = day + "日";
+				}
+				
 				break;
 			
 			//处理点击清空按钮
@@ -811,40 +1040,32 @@ function eventHandler(param, myDate, scrollVals, e){
 			//处理点击今天按钮
 			case "date-btns-today":
 				var curr = new Date();
-				
 				var timer = solveTime(curr.getHours(), curr.getMinutes(), curr.getSeconds());
+				if(param.type === "Y"){
+					myDate.year = curr.getFullYear();
+				}
 				
-				//处理输入框中显示部分。
-				getClassName(param.id, "datePicker-input", 'input').value =
-					curr.getFullYear() + "年" +
-					(curr.getMonth() + 1) + "月" +
-					curr.getDate() + "日  " + 
-					timer.hours + ":" +
-					timer.minutes + ":" +
-					timer.seconds;
+				if(param.type === "D"){
+					myDate.day = curr.getDate();
+				}
 				
-				//对自定义日期对象的处理。
-				solveDate(myDate, curr);
+				if(param.type === "M"){
+					myDate.month = myDate.currDate.getMonth() + 1;
+					getClassName(param.id, "month-input", 'input').value = myDate.month + "月";
+				}
+				//对自定义日期对象的处理;
+				setInputTimeValue(myDate, timer, param, curr);
 				
 				break;
 				
-			//处理点击今天按钮
+			//处理点击确定按钮
 			case "date-btns-confirm":
 				var curr = new Date();
-				
 				var timer = solveTime(myDate.hours, myDate.minutes, myDate.seconds);
 				
-				//处理输入框中显示部分。
-				getClassName(param.id, "datePicker-input", 'input').value =
-					myDate.year + "年" +
-					myDate.month + "月" +
-					myDate.day + "日  " + 
-					timer.hours + ":" +
-					timer.minutes + ":" +
-					timer.seconds;
 				
-				//对自定义日期对象的处理。
-				solveDate(myDate, curr);
+				//对自定义日期对象的处理
+				setInputTimeValue(myDate, timer, param, curr, scrollVals);
 				
 				break;
 				
@@ -862,19 +1083,32 @@ function eventHandler(param, myDate, scrollVals, e){
 			
 			//处理小时分钟选择器模块按钮事件
 			case "confirm":
-				hideModule(param.id, 'content-date', 'div');
+				
 				var timer = solveTime(-scrollVals.scrollHours, -scrollVals.scrollMinutes, -scrollVals.scrollSeconds);
+				
 				getClassName(param.id, "showTime", 'input').firstChild.nodeValue =	timer.hours + ":" +
 																			timer.minutes + ":" +
 																			timer.seconds;
 				myDate.hours = parseInt(timer.hours);
 				myDate.minutes = parseInt(timer.minutes);
 				myDate.seconds = parseInt(timer.seconds);
+				
+				if(param.type !== "H"){
+					hideModule(param.id, 'content-date', 'div');
+				}else{
+					getClassName(param.id, "datePicker-input", 'input').value = timer.hours + ":" +
+																			timer.minutes + ":" +
+																			timer.seconds;
+				}
+				
 				break;
 				
 			//处理小时分钟选择器模块按钮事件
 			case "cancel":
-				hideModule(param.id, 'content-date', 'div');
+				if(param.type !== "H"){
+					hideModule(param.id, 'content-date', 'div');
+				}
+				
 				break;
 			
 			case "datePicker-input":
@@ -889,7 +1123,7 @@ function eventHandler(param, myDate, scrollVals, e){
 	
 }
 
-
+//跨浏览器鼠标滚轮事件处理。
 function scrollFunc(e, scrollVals, property) {
 	
 	if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件             
@@ -973,7 +1207,7 @@ function scrollHandler(scrollVals, e){
  */
 function DatePicker(param){
 	
-	var myDate = {
+	this.myDate = {
 		year : 0,
 		month : 0,
 		day : 0,
@@ -984,7 +1218,9 @@ function DatePicker(param){
 		currDate : new Date()
 	};
 	
+	this.param = param;
 	
+	var myDate = this.myDate;
 	
 	//如果不是以new 构造函数的形式使用，就默认使用构造函数的方式调用。
 	if(!this instanceof DatePicker){
@@ -1018,12 +1254,12 @@ function DatePicker(param){
 						'</div>'+
 						'<div class="datePicker-showdate">'+
 						'<ul class="date-title">'+
-						'<li class="btn"><a class="year-prev" href="javascript:void(0);">◄</a></li>'+
-						'<li class="text"><input type="text" name="" class="year-input" value="2016年" /></li>'+
-						'<li class="btn"><a class="year-next" href="javascript:void(0);">►</a></li>'+
-						'<li class="btn"><a class="month-prev" href="javascript:void(0);">◄</a></li>'+
-						'<li class="text"><input class="month-input" type="text" name="" id="" value="6月" /></li>'+
-						'<li class="btn"><a class="month-next" href="javascript:void(0);">►</a></li>'+
+						'<li class="btn y-l-btn"><a class="year-prev" href="javascript:void(0);">◄</a></li>'+
+						'<li class="text y-text"><input type="text" name="" class="year-input" value="2016年" /></li>'+
+						'<li class="btn y-r-btn"><a class="year-next" href="javascript:void(0);">►</a></li>'+
+						'<li class="btn m-l-btn"><a class="month-prev" href="javascript:void(0);">◄</a></li>'+
+						'<li class="text m-text"><input class="month-input" type="text" name="" id="" value="6月" /></li>'+
+						'<li class="btn m-r-btn"><a class="month-next" href="javascript:void(0);">►</a></li>'+
 						'</ul>'+
 						'<ul class="date-title2"></ul>'+
 						'<div class="data-content">'+
@@ -1168,6 +1404,7 @@ function DatePicker(param){
 		if(typeof param.type != "undefined"){
 			
 			switch(param.type){
+				
 				case "Y-M-D-H" :
 					//隐藏年模块
 					hideModule(param.id, 'content-year', 'div');
@@ -1180,6 +1417,7 @@ function DatePicker(param){
 					//显示天数模块
 					showModule(param.id, 'content-day', 'div');
 					break;
+					
 				case "Y-M-D" :
 					//隐藏年模块
 					hideModule(param.id, 'content-year', 'div');
@@ -1192,6 +1430,7 @@ function DatePicker(param){
 					//显示天数模块
 					showModule(param.id, 'content-day', 'div');
 					break;
+					
 				case "Y-M" :
 				
 					//隐藏年模块
@@ -1206,6 +1445,7 @@ function DatePicker(param){
 					hideModule(param.id, 'content-day', 'div');
 					
 					break;
+					
 				case "Y" :
 					//隐藏年模块
 					showModule(param.id, 'content-year', 'div');
@@ -1217,14 +1457,91 @@ function DatePicker(param){
 					hideModule(param.id, 'date-date', 'ul');
 					//显示天数模块
 					hideModule(param.id, 'content-day', 'div');
+					
+					//隐藏按钮组
+					hideModule(param.id, 'm-l-btn', 'li');
+					hideModule(param.id, 'm-text', 'li');
+					hideModule(param.id, 'm-r-btn', 'li');
+					break;
+					
+				case "M" :
+					//隐藏年模块
+					hideModule(param.id, 'content-year', 'div');
+					//显示月模块
+					showModule(param.id, 'content-month', 'div');
+					//隐藏时间选择模块
+					hideModule(param.id, 'content-date', 'div');
+					//显示时间按钮组
+					hideModule(param.id, 'date-date', 'ul');
+					//显示天数模块
+					hideModule(param.id, 'content-day', 'div');
+					
+					//隐藏按钮组
+					hideModule(param.id, 'y-l-btn', 'li');
+					hideModule(param.id, 'y-text', 'li');
+					hideModule(param.id, 'y-r-btn', 'li');
+					break;
+					break;
+					
+				case "D" :
+					//隐藏年模块
+					hideModule(param.id, 'content-year', 'div');
+					//隐藏月模块
+					hideModule(param.id, 'content-month', 'div');
+					//隐藏时间选择模块
+					hideModule(param.id, 'content-date', 'div');
+					//显示时间按钮组
+					hideModule(param.id, 'date-date', 'ul');
+					//显示天数模块
+					showModule(param.id, 'content-day', 'div');
+					
+					hideModule(param.id, 'date-title', 'ul');
+					showModule(param.id, 'date-title2', 'ul');
+					
+					break;
+					
+				case "H" :
+					//隐藏年模块
+					hideModule(param.id, 'content-year', 'div');
+					//隐藏月模块
+					hideModule(param.id, 'content-month', 'div');
+					//隐藏时间选择模块
+					showModule(param.id, 'content-date', 'div');
+					//显示时间按钮组
+					hideModule(param.id, 'date-date', 'ul');
+					//显示天数模块
+					showModule(param.id, 'content-day', 'div');
+					
+					hideModule(param.id, 'date-title', 'ul');
+					showModule(param.id, 'date-title2', 'ul');
+					
+//					hideModule(param.id, 'date-btns', 'ul');
 					break;
 			}
 		}
 		
+		//初始化输入框
+		
+		
 		//初始化日期数据
-		solveDate(myDate, myDate.currDate);
+		if(param.type === "D"){
+			myDate.day = myDate.currDate.getDate();
+			myDate.week = myDate.currDate.getDay();
+		}
+		
+		//初始化日期数据
+		if(param.type === "M"){
+			myDate.month = myDate.currDate.getMonth() + 1;
+		}
+		
+		solveDate(myDate, myDate.currDate, param.type);
 		//初始化隐藏日期模块
 		hideModule(param.id, 'datePicker-showdate', 'div');
+		
+		if(param.myInput){
+			hideModule(param.id, 'datePicker-box', 'div');
+			showModule(param.id, 'datePicker-showdate', 'div');
+		}
 		
 		//初始化数据
 		getClassName(param.id, "year-input", 'input').value = myDate.currDate.getFullYear() + "年";
@@ -1245,6 +1562,12 @@ function DatePicker(param){
 			scrollSeconds: -myDate.seconds
 		}
 		
+		
+		if(param.type === "H"){
+			getClassName(param.id, "date-hours", 'ul').style.top = scrollVals.scrollHours * 30 + 'px';
+		    getClassName(param.id, "date-minutes", 'ul').style.top = scrollVals.scrollMinutes * 30 + 'px';
+		    getClassName(param.id, "date-seconds", 'ul').style.top = scrollVals.scrollSeconds * 30 + 'px';
+		}
 		
 		//点击事件处理程序的包装程序，为其初始化参数。
 		function currieClickEventHandler(e){
@@ -1281,5 +1604,93 @@ function DatePicker(param){
 	
 }
 
+//这里是定义一些公共的方法，用于处理或，获取当前时间。
 
+//获取当前的年数。
+DatePicker.prototype.getYear = function(){
+	return typeof this.myDate.year == "undefined" ? undefined : this.myDate.year;
+}
 
+//设置当前的年数
+DatePicker.prototype.setYear = function(val){
+	if(typeof this.myDate.year == "undefined" || typeof val != "number")
+		return ;
+		this.myDate.year = val;
+}
+
+//获取当前的月数。
+DatePicker.prototype.getMonth = function(){
+	return typeof this.myDate.month == "undefined" ? undefined : this.myDate.month;
+}
+
+//设置当前的月数
+DatePicker.prototype.setMonth = function(val){
+	if(typeof this.myDate.month == "undefined" || typeof val != "number")
+		return ;
+		this.myDate.month = val;
+}
+
+//获取当前的天数。
+DatePicker.prototype.getDay = function(){
+	return typeof this.myDate.day == "undefined" ? undefined : this.myDate.day;
+}
+
+//设置当前的天数
+DatePicker.prototype.setDay = function(val){
+	if(typeof this.myDate.day == "undefined" || typeof val != "number")
+		return ;
+		
+	switch(this.param.type){
+		case "Y-M-D-H":
+		case "Y-M-D":
+			var curr = new Date(this.myDate.year, this.myDate.month - 1, val);
+			this.myDate.day = val;
+			this.myDate.week = curr.getDay();
+			break;
+		case "D":
+			this.myDate.day = val;
+			break;
+	}
+		
+}
+
+//获取当前的周数
+DatePicker.prototype.getWeek = function(){
+	return typeof this.myDate.week == "undefined" ? undefined : this.myDate.week;
+}
+
+//获取当前的小时
+DatePicker.prototype.getHours = function(){
+	return typeof this.myDate.hours == "undefined" ? undefined : this.myDate.hours;
+}
+
+//设置当前的小时
+DatePicker.prototype.setHours = function(val){
+	if(typeof this.myDate.hours == "undefined" || typeof val != "number" || val < 0 || val > 23)
+		return ;
+		this.myDate.hours = val;
+}
+
+//获取当前的分钟
+DatePicker.prototype.getMinutes = function(){
+	return typeof this.myDate.minutes == "undefined" ? undefined : this.myDate.minutes;
+}
+
+//设置当前的分钟
+DatePicker.prototype.setMinutes = function(val){
+	if(typeof this.myDate.minutes == "undefined" || typeof val != "number" || val < 0 || val > 59)
+		return ;
+		this.myDate.minutes = val;
+}
+
+//获取当前的秒数
+DatePicker.prototype.getSeconds = function(){
+	return typeof this.myDate.seconds == "undefined" ? undefined : this.myDate.seconds;
+}
+
+//设置当前的秒数
+DatePicker.prototype.setSeconds = function(val){
+	if(typeof this.myDate.seconds == "undefined" || typeof val != "number" || val < 0 || val > 59)
+		return ;
+		this.myDate.seconds = val;
+}
