@@ -3,8 +3,10 @@
 
 ##使用方法
 1.首先引入 datePicker.css 和datePicker.js文件，
+
 2.接着使用一个div元素来作为日历插件的容器。这个容器的大小大约是 width <= 235px and  height <= 35px;如下所示：
 <div class="datePicker" id="xx"></div>
+
 3.new DatePicker()构造函数,这里可以省略new 关键字，内部已经处理，但不建议这么做。传入必选参数id,和显示的类型就可以使用了。 如下所示：
 var mydat = new DatePicker({id:"myce", type : "Y"});
 var mydat2 = DatePicker({id:"myce", type : "Y"});
