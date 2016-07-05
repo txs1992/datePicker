@@ -1,5 +1,5 @@
 # datePicker 时间选择器
-兼容IE(6/7/8/9/10/11(Edg))、 Chrome、Firefox、Safari、Opera 等浏览器的一个时间选择器插件，简称日历插件。
+兼容IE(6/7/8/9/10/11(Edg))、 Chrome、Firefox、Safari、Opera 等浏览器的一个时间选择器插件。
 
 ##使用方法
 1.首先引入 datePicker.css 和datePicker.js文件，
