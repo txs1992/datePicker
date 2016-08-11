@@ -5,6 +5,12 @@ div.datePicker{
 	position: relative;
 	width: 230px;
 	text-align: center;
+	background: #fff;
+	cursor: pointer;
+	-moz-user-select:none;
+}
+div.datePicker * {
+	box-sizing: content-box;
 }
 div.datePicker ul{
 	margin: 0;
@@ -45,7 +51,7 @@ div.datePicker > div.datePicker-box > input.datePicker-input{
 
 
 /*****************************************************************************************************
- * @日历主体
+ * @日历主体 
  */
  div.datePicker-showdate{
  	position: absolute;
@@ -55,6 +61,8 @@ div.datePicker > div.datePicker-box > input.datePicker-input{
 	width: 230px;
 	height: 225px;
 	border: 1px solid #AAB2BD;
+	background-color: white;
+	z-index: 9999;
 }
 
 /*****************************************************************************
