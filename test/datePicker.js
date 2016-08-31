@@ -4,7 +4,6 @@
  * @param {Object} className
  */
 function addClass(ele, className){
-	console.log(ele);
 	var classes = ele.className.split(" ");
 	var flag = true;
 	for(var i = 0, len = classes.length; i < len; i++){
@@ -600,10 +599,10 @@ function changeDayBtns(myDate, param){
 	while(index < currSum){
 		
 		if((num + dayType.week) % 7 == 0 || (num + dayType.week - 6) % 7 == 0){
-			days[index].className = "week day-btns";
+			days[index].className = "week day-mybtns";
 			days[index].firstChild.nodeValue = ++num;
 		}else{
-			days[index].className = "day-btns";
+			days[index].className = "day-mybtns";
 			days[index].firstChild.nodeValue = ++num;
 		}
 	
@@ -871,7 +870,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				//兼容浏览器的根据类名获取属性，只获取第一个元素。
 				var content_year = getClassName(param.id, 'content-year', 'div'),
 					year_as = content_year.getElementsByTagName('a'),
-					day_as = getClassNameAll(param.id, 'day-btns', 'a');
+					day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 					num = 0;
 				
 				
@@ -896,7 +895,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				break;
 			
 			//如果是点击了年的按钮组中的时候会触发这个事件，改变选中项的状态，将显示区的值改变。
-			case "year_btns":
+			case "year_mybtns":
 				var year_as = target.parentNode.parentNode.getElementsByTagName('a'),
 					day_as = null;
 				
@@ -922,7 +921,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;
 			
@@ -951,7 +950,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;
 				
@@ -979,7 +978,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;
 				
@@ -988,7 +987,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//兼容浏览器的根据类名获取属性，只获取第一个元素。
 				var content_month = getClassName(param.id, 'content-month', 'div'),
-					day_as = getClassNameAll(param.id, 'day-btns', 'a');
+					day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				
 				//判断当前的年的显示框是否是隐藏，如果是隐藏就显示，如果是显示就隐藏
 				hasShowMoudule(content_month, param.id, 'content-month', 'div', param);
@@ -1001,7 +1000,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				break;
 				
 			//如果是点击了年的按钮组中的时候会触发这个事件，改变选中项的状态，将显示区的值改变。
-			case "mth_btns":
+			case "mth_mybtns":
 				var month_as = target.parentNode.parentNode.getElementsByTagName('a'),
 					day_as = null;
 				
@@ -1036,7 +1035,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;	
 			
@@ -1077,7 +1076,7 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;
 				
@@ -1123,12 +1122,12 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				
 				//处理日期按钮组。
 				changeDayBtns(myDate, param);
-				day_as = getClassNameAll(param.id, 'day-btns', 'a');
+				day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				changeDayTag(day_as, myDate.day);
 				break;
 			
 			//点击日期按钮组，处理事件程序。
-			case "day-btns":
+			case "day-mybtns":
 				
 				var day_as = target.parentNode.parentNode.getElementsByTagName('a');
 				
@@ -1155,18 +1154,18 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				break;
 			
 			//处理点击清空按钮
-			case "date-btns-close":
+			case "date-mybtns-close":
 				getClassName(param.id, "datePicker-input", 'input').value = "";
 				solveDate(myDate, myDate.currDate, param.type);
 				break;
 				
 			//处理点击今天按钮
-			case "date-btns-today":
+			case "date-mybtns-today":
 				var curr = new Date(),
 					timer = solveTime(curr.getHours(), curr.getMinutes(), curr.getSeconds()),
 					year_as = getClassName(param.id, 'content-year', 'div').getElementsByTagName('a'),
 					month_as = getClassName(param.id, 'content-month', 'div').getElementsByTagName('a'),
-					day_as = getClassNameAll(param.id, 'day-btns', 'a');
+					day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 					
 				
 				if(param.type === "Y"){
@@ -1204,12 +1203,12 @@ function eventHandler(param, myDate, pickerDate, scrollVals, e){
 				break;
 				
 			//处理点击确定按钮
-			case "date-btns-confirm":
+			case "date-mybtns-confirm":
 				var curr = new Date(),
 					timer = solveTime(myDate.hours, myDate.minutes, myDate.seconds),
 					year_as = getClassName(param.id, 'content-year', 'div').getElementsByTagName('a'),
 					month_as = getClassName(param.id, 'content-month', 'div').getElementsByTagName('a'),
-					day_as = getClassNameAll(param.id, 'day-btns', 'a');
+					day_as = getClassNameAll(param.id, 'day-mybtns', 'a');
 				//对自定义日期对象的处理
 				setInputTimeValue("onday", myDate, timer, param, curr, scrollVals);
 				
@@ -1428,12 +1427,12 @@ function DatePicker(param){
 						'</div>'+
 						'<div class="datePicker-showdate">'+
 						'<ul class="date-title">'+
-						'<li class="btn y-l-btn"><a class="year-prev" href="javascript:void(0);">◄</a></li>'+
+						'<li class="mybtn y-l-mybtn"><a class="year-prev" href="javascript:void(0);">◄</a></li>'+
 						'<li class="text y-text"><input type="text" name="" class="year-input" value="2016年" /></li>'+
-						'<li class="btn y-r-btn"><a class="year-next" href="javascript:void(0);">►</a></li>'+
-						'<li class="btn m-l-btn"><a class="month-prev" href="javascript:void(0);">◄</a></li>'+
+						'<li class="mybtn y-r-mybtn"><a class="year-next" href="javascript:void(0);">►</a></li>'+
+						'<li class="mybtn m-l-mybtn"><a class="month-prev" href="javascript:void(0);">◄</a></li>'+
 						'<li class="text m-text"><input class="month-input" type="text" name="" id="" value="6月" /></li>'+
-						'<li class="btn m-r-btn"><a class="month-next" href="javascript:void(0);">►</a></li>'+
+						'<li class="mybtn m-r-mybtn"><a class="month-next" href="javascript:void(0);">►</a></li>'+
 						'</ul>'+
 						'<ul class="date-title2"></ul>'+
 						'<div class="data-content">'+
@@ -1467,12 +1466,12 @@ function DatePicker(param){
 				
 				if(i + 1 != myDate.currDate.getDate()){
 					if((i + dayType.week) % 7 == 0 || (i + dayType.week - 6) % 7 == 0){
-						dateSubEle += '<li><a class="day-btns week" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
+						dateSubEle += '<li><a class="day-mybtns week" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
 					}else{
-						dateSubEle += '<li><a class="day-btns" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
+						dateSubEle += '<li><a class="day-mybtns" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
 					}
 				}else{
-					dateSubEle += '<li><a class="day-btns on" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
+					dateSubEle += '<li><a class="day-mybtns on" href="javascript:void(0);"> ' + (i+1) + ' </a></li>';
 				}
 			}
 			
@@ -1487,18 +1486,18 @@ function DatePicker(param){
 							'<div class="content-month">'+
 							'<div id="close-month"><a href="javascript:void(0);">×</a></div>'+
 							'<ul>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">1月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">2月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">3月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">4月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">5月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">6月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">7月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">8月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">9月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">10月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">11月</a></li>'+
-							'<li><a class="mth_btns" href="javascript:void(0);">12月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">1月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">2月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">3月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">4月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">5月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">6月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">7月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">8月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">9月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">10月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">11月</a></li>'+
+							'<li><a class="mth_mybtns" href="javascript:void(0);">12月</a></li>'+
 							'</ul>'+
 							'</div>'+
 							'<div class="content-year">'+
@@ -1508,7 +1507,7 @@ function DatePicker(param){
 			var curr = myDate.currDate.getFullYear() - 25;
 			
 			for(var i = 0; i < 50; i++){
-				dateSubEle += '<li><a class="year_btns" href="javascript:void(0);">' + (curr++) + '年</a></li>';
+				dateSubEle += '<li><a class="year_mybtns" href="javascript:void(0);">' + (curr++) + '年</a></li>';
 			}
 			
 			dateSubEle += 	'</ul>'+
@@ -1556,10 +1555,10 @@ function DatePicker(param){
 							'<li class="key">时间</li>'+
 							'<li class="value"><a class="showTime" href="javascript:void(0);">12:00:00</a></li>'+
 							'</ul>'+
-							'<ul class="date-btns">'+
-							'<li><a class="date-btns-close" href="javascript:void(0);">清空</a></li>'+
-							'<li><a class="date-btns-today" href="javascript:void(0);">今天</a></li>'+
-							'<li><a class="date-btns-confirm" href="javascript:void(0);">确定</a></li>'+
+							'<ul class="date-mybtns">'+
+							'<li><a class="date-mybtns-close" href="javascript:void(0);">清空</a></li>'+
+							'<li><a class="date-mybtns-today" href="javascript:void(0);">今天</a></li>'+
+							'<li><a class="date-mybtns-confirm" href="javascript:void(0);">确定</a></li>'+
 							'</ul>'+
 							'</div>'+
 							'</div>'+
@@ -1633,9 +1632,9 @@ function DatePicker(param){
 					hideModule(param.id, 'content-day', 'div');
 					
 					//隐藏按钮组
-					hideModule(param.id, 'm-l-btn', 'li');
+					hideModule(param.id, 'm-l-mybtn', 'li');
 					hideModule(param.id, 'm-text', 'li');
-					hideModule(param.id, 'm-r-btn', 'li');
+					hideModule(param.id, 'm-r-mybtn', 'li');
 					break;
 					
 				case "M" :
@@ -1651,9 +1650,9 @@ function DatePicker(param){
 					hideModule(param.id, 'content-day', 'div');
 					
 					//隐藏按钮组
-					hideModule(param.id, 'y-l-btn', 'li');
+					hideModule(param.id, 'y-l-mybtn', 'li');
 					hideModule(param.id, 'y-text', 'li');
-					hideModule(param.id, 'y-r-btn', 'li');
+					hideModule(param.id, 'y-r-mybtn', 'li');
 					break;
 					break;
 					
