@@ -87,7 +87,7 @@ div.datePicker-showdate > ul.date-title > li{
 	margin-top: 2px;
 	margin-left: 1px;
 }
-div.datePicker-showdate > ul.date-title > li.btn{
+div.datePicker-showdate > ul.date-title > li.mybtn{
 	width: 25px;
 	height: 25px;
 }
@@ -97,7 +97,7 @@ div.datePicker-showdate > ul.date-title > li.text{
 	line-height: 20px;
 }
 /*按钮样式*/
-div.datePicker-showdate > ul.date-title > li.btn > a{
+div.datePicker-showdate > ul.date-title > li.mybtn > a{
 	display: block;
 	width: 19px;
 	height: 19px;
@@ -446,18 +446,18 @@ div.date-bottom > ul.date-date > li.value{
 }
 
 
-div.date-bottom > ul.date-btns{
+div.date-bottom > ul.date-mybtns{
 	width: 111px;
 	height: 25px;
 	float: right;
 }
-div.date-bottom > ul.date-btns > li{
+div.date-bottom > ul.date-mybtns > li{
 	width: 37px;
 	height: 20px;
 	line-height: 20px;
 	float: left;
 }
-div.date-bottom > ul.date-btns > li a{
+div.date-bottom > ul.date-mybtns > li a{
 	display: block;
 	width: 32px;
 	height: 20px;
@@ -469,6 +469,6 @@ div.date-bottom > ul.date-btns > li a{
 	border: 1px solid #AAB2BD;
 	border-radius: 4px;
 }
-div.date-bottom > ul.date-btns > li a:hover{
+div.date-bottom > ul.date-mybtns > li a:hover{
 	background-color: #E6E9ED;
 }
