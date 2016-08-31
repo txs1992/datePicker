@@ -4,6 +4,7 @@
  * @param {Object} className
  */
 function addClass(ele, className){
+	console.log(ele);
 	var classes = ele.className.split(" ");
 	var flag = true;
 	for(var i = 0, len = classes.length; i < len; i++){
@@ -483,6 +484,11 @@ function changeDayTag(day_as, value){
 			break;
 		}
 	}
+	
+	if(currTarget == null){
+		currTarget = day_as[day_as.length -1];
+	}
+	
 	addClass(currTarget, "on");
 }
 
