@@ -48,6 +48,3 @@ var mydat2 = DatePicker({id:"myce", type : "Y"});
 ####setMinutes(val)   设置分钟。
 ####getSeconds()      获取秒数。
 ####setSeconds(val)   设置秒数。
-
-
-
