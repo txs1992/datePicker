@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/datePicker.min.css"/>
+	</head>
+	<body>
+		<p>这里是默认显示的方式 </p>
+		<p>var dats = new DatePicker({id : "mm", type : "Y-M-D-H"});</p>
+		<div class="datePicker" id="mm"></div>
+		
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		
+		<p>这里是直接显示日历的</p>
+		<p>var dats2 = new DatePicker({id : "show", type : "Y-M-D-H", showDate : true});</p>
+		<div class="datePicker" id="show"></div>
+		
+		
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		<p>这里是直接显示日历的,且不带输入框的</p>
+		<p>var dats3 = new DatePicker({id : "hideInput", type : "Y-M-D-H", showDate : true, showInput : false});</p>
+		<div class="datePicker" id="hideInput"></div>
+		
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		<p>这里是默认日历，只显示年和月的</p>
+		<p>var dats3 = new DatePicker({id : "hideInput", type : "Y-M-D-H", showDate : true, showInput : false});</p>
+		<div class="datePicker" id="Ym"></div>
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
+		
+		
+		<script src="js/datePicker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var dats = new DatePicker({id : "mm", type : "Y-M-D-H"});
+			
+			var dats2 = new DatePicker({id : "show", type : "Y-M-D-H", showDate : true});
+			
+			var dats3 = new DatePicker({id : "hideInput", type : "Y-M-D-H", showDate : true, showInput : false});
+		
+			var dats4 = new DatePicker({id : "Ym", type : "Y-M"});
+		</script>
+	</body>
+</html>
